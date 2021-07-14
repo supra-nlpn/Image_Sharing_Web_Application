@@ -1,0 +1,108 @@
+{% load static %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<style>
+    .icon{
+      border-radius: 50%;
+      left: 30px;
+      position: relative;
+      top: 5px;
+    }
+    .appicon-text{
+      position: relative;
+      left: 25px;
+      letter-spacing: 2px;
+      font-size: 28px;
+      top: 3px;
+      font-weight: bold;
+      font-family: 'Poppins', sans-serif;
+    }
+    .unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .nav-icons{
+    color: black;
+    background: white;
+    border-radius: 50%;
+    border: 3px solid black;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+  }
+  
+  .nav-icons:hover{
+    color: white;
+    background: black;
+  }
+  .nav-icons:focus{
+        background: black;
+        
+  }
+  .nav-icons:active{
+      background: black;
+  }
+
+  .nav-icons-1{
+    color: black;
+    background: #2ff42f;
+    border-radius: 50%;
+    border: 3px solid #2ff42f;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+  }
+  
+  .nav-icons-1:hover{
+    color: white;
+    background: #2ff42f;
+  }
+  .nav-icons-1:focus{
+        background: black;
+        
+  }
+  .nav-icons-1:active{
+      background: black;
+  }
+</style>
+
+<nav style="height: 70px; background: white;" class="navbar fixed-top navbar-expand-sm navbar-light">
+    <!-- Brand/logo -->
+    <a class="navbar-brand" href="{% url 'home' %}">
+      <img class="icon unselectable"  src="{% static 'img/appimage/appicon.png' %}" height="50px" width="55px"alt="openpix">
+    </a>
+    
+    <span class="appicon-text unselectable">openpix</span>
+    <!-- Links -->
+    
+    <ul style="margin-right: 130px;" class="navbar-nav ml-auto">
+      {% if user.is_authenticated %}
+      
+      <div class="dropdown unselectable">
+        <li style="position: relative; right: -80px; top: 2px; font-size:25px; color: black; font-weight: bold;border: 2px soild black "  class="nav-link dropdown-toggle" data-toggle="dropdown">
+          <img height="40px" width="40px"  class="rounded-circle" src="{{user.userpic.url}}" alt="">
+        </li>
+        <div style="font-weight: bold; font-family: verdana; background: white; border-radius: 10px;" class="dropdown-menu mt-2">
+          <a class="dropdown-item" href="{% url 'profile' %}"> <i class="fas fa-user-alt"></i> Profile </a>
+          <a class="dropdown-item" href="{% url 'changepwd' %}"> <i class="fas fa-key"></i> Change Password </a>
+          <a class="dropdown-item" href="{% url 'lgo' %}"> <i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+      </div>
+      <li>
+        <a title="Add Pix" style="text-decoration: none;position:relative; right: -100px ;top: 7px;font-size: 28px; font-family: verdana; " class="nav-icons-1 unselectable" href="{% url 'addimg' %}">&nbsp<span class="x" style="top: -2px; position: relative;">+</span>&nbsp </a>
+      </li>
+      {% else %}
+      {% endif %}
+    </ul>
+  </nav>

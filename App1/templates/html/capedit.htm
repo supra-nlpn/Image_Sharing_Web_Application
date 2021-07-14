@@ -1,0 +1,27 @@
+{% extends 'html/base.htm' %}
+{% load static %}
+{% block title %}Logout{% endblock %}
+{% block content %}
+<div style="position: relative; top: 80px;" class="container">
+    <div class="card col-md-5 mx-auto ">
+        <div class="card-body">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <h3>Edit Caption</h3>
+                {% for i in u %}
+                <div>{{i}}</div>
+                {% endfor %}
+                <div class="row">
+                    <div class="col">
+                        <a  class="btn btn-outline-danger my-2" href="{% url 'profile' %}">Back</a>
+                    </div>
+                    <div class="col">
+                        <input class="btn btn-outline-success my-2" type="submit" value="Update">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>     
+</div>
+<img style="position: relative;left: 570px; top: 170px" class=""  src="{% static 'img/appimage/changecap_img.png' %}" height="300px" width="400px"alt="cloud upload">
+{% endblock %}

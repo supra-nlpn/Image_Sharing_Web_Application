@@ -1,0 +1,91 @@
+{% extends 'html/base.htm' %}
+{% load static %}
+{% block title %}Image View{% endblock %}
+{% block content %}
+<style>
+    body{
+        overflow: hidden;
+    }
+    .img-div{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 760px;
+        width: 800px;
+        
+    }
+    .img-1{
+        max-height: 650px;
+        max-width: 600px;
+        border-radius: 10px;
+        position: relative;
+        top: 30px;
+    }
+    .chat-area{
+        height: 270px;
+        width: 375px;
+        
+        position: relative;
+        top: -620px;
+        left: 860px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        font-family: verdana;
+    }
+    .r1{
+        position: relative;
+        top: 5px;
+    }
+    .unselectable {
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+      }
+</style>
+            <div class="img-div">
+            <img  class="img-1" src="{{ k.photo.url }}" alt="">
+            </div>  
+
+            <div style="position: relative; color: rgb(109, 101, 101); font-size: 40px; top:-620px; left:860px">
+                {{k.caption}} 
+            </div> 
+             <a style="text-decoration: none;" href="{% url 'showprofile' u.id %}">   
+            <div class="unselectable" style="background-color: rgb(207, 200, 200);border-radius: 10px ;display: inline;font-weight: 500; position: relative; font-size:20px; color: black; top:-620px; left:860px; color: blue">
+               &nbsp@{{u.username}}&nbsp
+            </div>
+            </a>
+            <br>
+            <a style="position: relative; top: -600px; left:860px;" title="download" class="btn btn-outline-success" href="{{ k.photo.url }}" download> 
+            <i class="fas fa-file-download"></i> </a>
+            <a style="position: relative; top: -600px; left:870px;" title="open original" class="btn btn-outline-info" href="{{ k.photo.url }}" save> 
+            <i class="fas fa-external-link-square-alt"></i> </a>
+
+                <form style="display: inline;position: relative;top: -300px; left:860px; " action="" method="POST">
+                    {% csrf_token %}
+                    <div>
+                        <input style="width: 330px; height: 40px; background: rgb(217, 217, 247);" type="textfield" name="comment" placeholder="   Add comment..." >
+                        
+                        <button style="position: relative; top:-3px" class=" btn btn-outline-primary" type="submit" ><i class="fas fa-comment-dots"></i></button>
+                    </div>
+                </form>
+
+            <div class="chat-area" >
+                
+                <div class="row r1">
+                    {% for j in a %}
+                    <div class="col-sm-5">
+                        <p class="font-weight-bold" >@{{j.uname}}</p>
+                    </div>
+                    <div  class="col-sm-5">
+                        <div style="background: rgb(217, 217, 247); border-radius: 10px; width: 160px; font-size:15px;">
+                            <span style="position: relative;left: 5px;">{{j.comment}}</span></div> 
+                        <br>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>    
+           
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'html/base.htm' %}
+{% load static %}
+{% block title %}Logout{% endblock %}
+{% block content %}
+<br> <br> <br>
+<div class="container mt-4">
+    <div class="card col-md-5 mx-auto ">
+        <div class="card-body">
+            <h3>Logout</h3>
+            <p>Are you sure you Want to logout?</p>
+            <a href="{% url 'welcome' %}" class="btn btn-outline-success ">Logout</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
