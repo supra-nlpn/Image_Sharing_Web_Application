@@ -1,6 +1,4 @@
-Hello, this is an Image sharing web application bulit on the top of
-python-based web framework Django.
-
+Openpix: Image sharing web application bulit with Django.
 
 1. Download the ZIP file or clone the repository
 2. Install all the required packages
